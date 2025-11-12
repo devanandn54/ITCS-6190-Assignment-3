@@ -194,7 +194,7 @@ Once connected via SSH, run the following commands to install the necessary soft
     ![output1](wbpage_1.png)
     ![output2](wbpage_2.png)
 
-    ![Athena Output](o:p_ennriched.png)
+    ![Athena Output](op_ennriched.png)
 
 ---
 
