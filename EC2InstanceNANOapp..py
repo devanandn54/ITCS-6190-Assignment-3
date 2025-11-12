@@ -5,7 +5,7 @@ from flask import Flask
 # --- CONFIGURATION - REPLACE THESE VALUES ---
 AWS_REGION = "us-east-1"  # e.g., "us-west-2"
 ATHENA_DATABASE = "orders_db"  # The name of your Athena database
-S3_OUTPUT_LOCATION = "s3://itcs6190-assignment-801395558 /enriched" # Your Athena results bucket
+S3_OUTPUT_LOCATION = "s3://itcs6190-assignment-801395558/enriched" # Your Athena results bucket
 # -------------------------------------------
 
 # Initialize Flask app and Boto3 client
