@@ -11,7 +11,7 @@ First, set up an S3 bucket with the following folder structure to manage the dat
     * **`processed/`**: For cleaned and filtered data output by the Lambda function.
     * **`enriched/`**: For storing athena query results.
  
-  ![S3 structure] (S3_structure.png)
+  ![S3 structure](S3_structure.png)
 
 ---
 
@@ -28,6 +28,9 @@ Create the following IAM roles to grant AWS services the necessary permissions t
     * `AWSLambdaBasicExecutionRole`
     * `AmazonS3FullAccess`
 5.  Give the role a descriptive name (e.g., `Lambda-S3-Processing-Role`) and create it.
+    ![IAM roles](Roles_1.png)
+    ![IAM roles](Roles_2.png)
+
 
 ### Glue Service Role
 
@@ -60,7 +63,7 @@ This function will automatically process files uploaded to the `raw/` S3 folder.
 6.  **Permissions**: Expand *Change default execution role*, select **Use an existing role**, and choose the **Lambda Execution Role** you created.
 7.  Click **Create function**.
 8.  In the **Code source** editor, replace the default code with LambdaFunction.py code for processing the raw data.
-
+   ![Lambda function creation](Lambda_1.png)
 ---
 
 ## 4. Configure the S3 Trigger ⚡
@@ -74,9 +77,11 @@ Set up the S3 trigger to invoke your Lambda function automatically.
 5.  **Prefix (Required)**: Enter `raw/`. This ensures the function only triggers for files in this folder.
 6.  **Suffix (Recommended)**: Enter `.csv`.
 7.  Check the acknowledgment box and click **Add**.
-
+![Lambda function trigger](Lambda_trigger.png)
+   ![config trigger](config_trigger.png)
 --- 
 **Start Processing of Raw Data**: Now upload the Orders.csv file into the `raw/` folder of the S3 Bucket. This will automatically trigger the Lambda function.
+![output](processed_folder.png)
 ---
 
 ## 5. Create a Glue Crawler 🕸️
@@ -90,7 +95,7 @@ The crawler will scan your processed data and create a data catalog, making it q
 5.  **IAM Role**: Select the **Glue Service Role** you created earlier.
 6.  **Output**: Click **Add database** and create a new database named `orders_db`.
 7.  Finish the setup and run the crawler. It will create a new table in your `orders_db` database.
-
+![crawler_cloudlog](crawler_cw.png)
 ---
 
 ## 6. Query Data with Amazon Athena 🔍
@@ -186,6 +191,10 @@ Once connected via SSH, run the following commands to install the necessary soft
     http://YOUR_PUBLIC_IP_ADDRESS:5000
     ```
     You should now see your Athena Orders Dashboard!
+    ![output1](wbpage_1.png)
+    ![output2](wbpage_2.png)
+
+    ![Athena Output](o:p_ennriched.png)
 
 ---
 
