@@ -190,6 +190,8 @@ Once connected via SSH, run the following commands to install the necessary soft
     ```
     http://YOUR_PUBLIC_IP_ADDRESS:5000
     ```
+
+    Check out my [output](http://3.85.224.245:5000/).
     You should now see your Athena Orders Dashboard!
     ![output1](wbpage_1.png)
     ![output2](wbpage_2.png)
